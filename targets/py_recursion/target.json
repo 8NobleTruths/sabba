@@ -1,0 +1,9 @@
+{
+  "name": "py_recursion",
+  "domain": "python",
+  "language": "python",
+  "cwe": "CWE-674",
+  "title": "unbounded recursion in deep() (stack exhaustion)",
+  "file": "vuln.py",
+  "function": "deep"
+}

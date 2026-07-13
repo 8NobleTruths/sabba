@@ -1,0 +1,9 @@
+{
+  "name": "go_oob",
+  "domain": "go",
+  "language": "go",
+  "cwe": "CWE-125",
+  "title": "index out of range in Index() (panic denial of service)",
+  "file": "vuln.go",
+  "function": "Index"
+}

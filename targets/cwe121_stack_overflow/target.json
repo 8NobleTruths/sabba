@@ -1,0 +1,18 @@
+{
+  "name": "cwe121_stack_overflow",
+  "language": "c",
+  "sources": ["vuln.c"],
+  "description": "Single-file C program that copies argv[1] into a 16-byte stack buffer via strcpy with no bounds check.",
+  "ground_truth": {
+    "cwe": "CWE-121",
+    "function": "greet",
+    "file": "vuln.c",
+    "line": 16,
+    "sink": "strcpy",
+    "sanitizer_class": "stack-buffer-overflow"
+  },
+  "known_poc": {
+    "argv": ["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
+    "stdin": ""
+  }
+}

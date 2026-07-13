@@ -1,0 +1,27 @@
+#!/bin/sh
+# Refuse to commit anything that looks like a credential. Keys are read from the
+# environment at runtime and never stored in the tree. Enable this hook once per clone:
+#
+#     git config core.hooksPath .githooks
+#
+# It scans the staged diff for common key shapes and blocks obvious secret files.
+
+added=$(git diff --cached --unified=0 | grep '^+' | grep -v '^+++')
+
+patterns='sk-or-v1-[A-Za-z0-9]{16,}|sk-[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9-]{20,}|hf_[A-Za-z0-9]{30,}|ak-[A-Za-z0-9]{18,}|as-[A-Za-z0-9]{18,}|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{50,}|AKIA[0-9A-Z]{16}|AIza[A-Za-z0-9_-]{35}|-----BEGIN [A-Z ]*PRIVATE KEY-----'
+
+hits=$(printf '%s\n' "$added" | grep -nE "$patterns")
+if [ -n "$hits" ]; then
+    echo "pre-commit blocked: a staged change looks like a credential." >&2
+    echo "$hits" >&2
+    echo "Load secrets from the environment (see CONTRIBUTING.md), do not commit them." >&2
+    exit 1
+fi
+
+files=$(git diff --cached --name-only)
+if printf '%s\n' "$files" | grep -Eq '(^|/)\.env($|\.)|secret|credential|\.pem$|\.key$'; then
+    echo "pre-commit blocked: a staged file name looks like a secret (.env / *secret* / *.pem / *.key)." >&2
+    exit 1
+fi
+
+exit 0

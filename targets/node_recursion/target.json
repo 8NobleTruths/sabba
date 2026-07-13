@@ -1,0 +1,9 @@
+{
+  "name": "node_recursion",
+  "domain": "node",
+  "language": "javascript",
+  "cwe": "CWE-674",
+  "title": "unbounded recursion in deep() (stack exhaustion)",
+  "file": "vuln.js",
+  "function": "deep"
+}

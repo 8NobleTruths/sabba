@@ -1,0 +1,9 @@
+{
+  "name": "evm_reentrancy",
+  "domain": "evm",
+  "language": "solidity",
+  "cwe": "CWE-841",
+  "title": "reentrancy drain of Vault",
+  "file": "src/Vulnerable.sol",
+  "function": "withdraw"
+}

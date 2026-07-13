@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+test = "test"
+out = "out"
+libs = ["lib"]
+# Model-authored exploit code runs here. Keep it away from the host: no ffi, no
+# filesystem. Until there is a container backend, this ffi lockdown is what stops a
+# generated forge test from running arbitrary shell through vm.ffi.
+ffi = false
+fs_permissions = []

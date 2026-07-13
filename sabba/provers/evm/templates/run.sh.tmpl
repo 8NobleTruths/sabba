@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Re-run this proof. Needs Foundry (forge) and an archive RPC.
+set -e
+cd "$(dirname "$0")"
+: "${SABBA_ETH_RPC:?set SABBA_ETH_RPC to an archive RPC url for the forked chain}"
+forge test \
+  --match-contract __CONTRACT__ \
+  --match-test test_exploit \
+  --fork-url "$SABBA_ETH_RPC" \
+  --fork-block-number __BLOCK__ \
+  -vvv

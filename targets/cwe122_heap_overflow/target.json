@@ -1,0 +1,18 @@
+{
+  "name": "cwe122_heap_overflow",
+  "language": "c",
+  "sources": ["parse.c"],
+  "description": "Copies argv[1] into a heap buffer sized with malloc(strlen(s)) — missing +1 for the NUL.",
+  "ground_truth": {
+    "cwe": "CWE-122",
+    "function": "dup_token",
+    "file": "parse.c",
+    "line": 14,
+    "sink": "strcpy",
+    "sanitizer_class": "heap-buffer-overflow"
+  },
+  "known_poc": {
+    "argv": ["hello"],
+    "stdin": ""
+  }
+}

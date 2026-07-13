@@ -1,0 +1,9 @@
+{
+  "name": "java_recursion",
+  "domain": "java",
+  "language": "java",
+  "cwe": "CWE-674",
+  "title": "unbounded recursion in deep() (stack exhaustion)",
+  "file": "Vuln.java",
+  "function": "deep"
+}

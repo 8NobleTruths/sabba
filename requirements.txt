@@ -1,0 +1,21 @@
+# Sabba Phase-0 dependencies.
+#   python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt
+openai>=1.40           # GLM-5.2 / OpenRouter / local (OpenAI-compatible) providers
+mcp>=1.2               # expose Sabba as an MCP server (sabba mcp), for other agents to call
+anthropic>=0.49        # optional Claude provider (self-as-LLM / Vertex path)
+pytest>=8.0            # M0 oracle test
+semgrep>=1.100         # Wave 3 discovery (static candidates)
+tokenizers>=0.20       # GPU-gate artifact: custom code BPE trainer (CPU)
+scikit-learn>=1.3      # local ML risk ranker (TF-IDF + logistic), CPU, trains in seconds
+tree-sitter>=0.23      # Phase 1a patch-miner: C function extraction
+tree-sitter-c>=0.23    # C grammar for tree-sitter
+# Vertex backend (optional, run the reasoning model on GCP project sabba-lab):
+#   pip install "anthropic[vertex]"
+z3-solver>=4.12
+rich>=13.7
+typer>=0.12
+textual>=0.60
+requests>=2.31
+ddgs>=6.0
+psutil>=5.9
+prompt_toolkit>=3.0

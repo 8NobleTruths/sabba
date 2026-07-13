@@ -1,0 +1,53 @@
+# ── Secrets — NEVER commit (defense in depth; real secrets live outside the repo)
+.env
+.env.*
+*.pem
+*.key
+*.keyfile
+secrets.*
+**/env
+qwen_env
+*.credentials
+credentials.json
+
+# ── Moat: datasets & model weights are NOT part of this public framework repo
+*.jsonl
+*.bin
+*.pt
+*.ckpt
+*.safetensors
+/scans/
+/corpus/
+/datasets/
+
+# ── Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# ── Build / sandbox scratch
+*.o
+*.out
+a.out
+/tmp/
+sandbox_work/

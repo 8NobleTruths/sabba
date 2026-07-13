@@ -1,0 +1,26 @@
+# Build and publish Sabba to PyPI. Runs ONLY on a version tag (v*), so nothing is published
+# until someone pushes a tag on purpose -- the publish stays gated for the launch. Uses PyPI
+# trusted publishing (OIDC), so no API token is stored in the repo.
+name: publish
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write        # trusted publishing to PyPI
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Build sdist and wheel
+        run: |
+          pip install build twine
+          python -m build
+          twine check dist/*
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

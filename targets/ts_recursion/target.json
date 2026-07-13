@@ -1,0 +1,9 @@
+{
+  "name": "ts_recursion",
+  "domain": "node",
+  "language": "typescript",
+  "cwe": "CWE-674",
+  "title": "unbounded recursion in deep() (stack exhaustion, TypeScript)",
+  "file": "vuln.ts",
+  "function": "deep"
+}
