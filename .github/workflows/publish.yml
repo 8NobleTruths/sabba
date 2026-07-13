@@ -1,11 +1,11 @@
-# Build and publish Sabba to PyPI. Runs ONLY on a version tag (v*), so nothing is published
-# until someone pushes a tag on purpose -- the publish stays gated for the launch. Uses PyPI
-# trusted publishing (OIDC), so no API token is stored in the repo.
+# Build and publish Sabba to PyPI. Runs ONLY when started by hand from the Actions tab
+# (workflow_dispatch), so tagging a release never auto-publishes. Set up PyPI trusted
+# publishing (OIDC) for this repo first, then run this workflow to publish. No API token is
+# stored in the repo.
 name: publish
 
 on:
-  push:
-    tags: ["v*"]
+  workflow_dispatch:
 
 jobs:
   build-and-publish:
