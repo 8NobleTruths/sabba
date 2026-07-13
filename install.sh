@@ -24,7 +24,7 @@ else
     else
         say "cloning $REPO"
         mkdir -p "$SABBA_HOME"
-        git clone --depth 1 "$REPO" "$SRC"
+        git clone --depth 1 --recurse-submodules --shallow-submodules "$REPO" "$SRC"
     fi
 fi
 

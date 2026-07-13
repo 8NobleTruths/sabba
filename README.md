@@ -144,7 +144,7 @@ not the model, so the model cannot grade its own work.
 ## Install
 
 ```bash
-git clone https://github.com/8NobleTruths/sabba.git
+git clone --recurse-submodules https://github.com/8NobleTruths/sabba.git
 cd sabba
 ./install.sh
 ```
