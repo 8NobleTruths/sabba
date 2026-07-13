@@ -88,18 +88,18 @@ on the working tree:
 Every client needs the same three facts: run the command `sabba` with the argument `mcp` over
 stdio.
 
-**Claude Code**
-
-```bash
-claude mcp add sabba -- sabba mcp
-```
-
 **Codex CLI** (`~/.codex/config.toml`)
 
 ```toml
 [mcp_servers.sabba]
 command = "sabba"
 args = ["mcp"]
+```
+
+**Claude Code**
+
+```bash
+claude mcp add sabba -- sabba mcp
 ```
 
 **OpenCode** (`opencode.json`)

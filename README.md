@@ -26,9 +26,22 @@ positives. Sabba takes the opposite stance: a model proposes candidates, but an 
 oracle runs an exploit** and decides whether a security property actually broke. Nothing is
 reported unless the exploit reproduces. A finding is not a score, it is a re-runnable proof.
 
+<p align="center">
+  <img src="docs/img/sabba-demo.gif" alt="Sabba proving a stack overflow and a heap overflow by running them" width="820">
+</p>
+
 ## Use it from any coding agent (MCP)
 
-Sabba runs as an MCP server, so Claude Code, Codex, OpenCode, Cursor, and Hermes can call it:
+Sabba runs as an MCP server, so Claude Code, Codex, OpenCode, Cursor, and Hermes can call it.
+For **Codex CLI**, add it to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.sabba]
+command = "sabba"
+args = ["mcp"]
+```
+
+For **Claude Code**:
 
 ```bash
 claude mcp add sabba -- sabba mcp        # after installing; see Install below
